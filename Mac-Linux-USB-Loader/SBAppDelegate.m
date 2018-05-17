@@ -313,7 +313,7 @@ const NSString *SBBundledEnterpriseVersionNumber = @"0.4.1";
 		if ([NSWorkspace.sharedWorkspace getFileSystemInfoForPath:usbDeviceMountPoint isRemovable:&isRemovable isWritable:&isWritable isUnmountable:&isUnmountable description:&description type:&volumeType]) {
 			if (isWritable && (acceptHardDrives || (isRemovable && isUnmountable))) {
 #ifdef DEBUG
-				NSLog(@"Detected eligible volume at %@. Type: %@", usbDeviceMountPoint, volumeType);
+				NSLog(@"Detected potentially eligible volume at %@. Type: %@", usbDeviceMountPoint, volumeType);
 #endif
 
 				if ([usbDeviceMountPoint isEqualToString:@"/"]) {
@@ -322,6 +322,9 @@ const NSString *SBBundledEnterpriseVersionNumber = @"0.4.1";
 				} else {
 					if ([volumeType isEqualToString:@"msdos"] ||
 					    ([volumeType isEqualToString:@"hfs"] && acceptHFSDrives)) {
+#ifdef DEBUG
+						NSLog(@"Adding %@ to list of USB devices.", usbDeviceMountPoint);
+#endif
 						SBUSBDevice *usbDevice = [[SBUSBDevice alloc] init];
 						usbDevice.path = usbDeviceMountPoint;
 						usbDevice.name = usbDeviceMountPoint.lastPathComponent;
