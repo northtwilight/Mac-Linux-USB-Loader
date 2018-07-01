@@ -21,7 +21,7 @@
 @property (weak) IBOutlet NSCollectionView *usbDriveSelector;
 @property (weak) IBOutlet NSPopUpButton *enterpriseSourceSelector;
 @property (weak) IBOutlet NSPopUpButton *distributionSelectorPopup;
-@property (weak) IBOutlet NSButton *isLegacyUbuntuVersionCheckBox;
+@property (weak) IBOutlet NSButton *lacksEfiEnabledKernelCheckbox;
 @property (weak) IBOutlet NSButton *shouldSkipBootMenuCheckbox;
 @property (weak) IBOutlet NSButton *forwardButton;
 @property (weak) IBOutlet NSButton *backwardsButton;
@@ -34,9 +34,6 @@
 	NSString *originalForwardButtonString;
 	NSString *originalBackwardsButtonString;
 	BOOL installationOperationStarted;
-
-	// For Linux Mint, etc. compatibility
-	BOOL useOldMacVersion;
 }
 
 #pragma mark - Document class crap
@@ -113,9 +110,9 @@
 	    [isoName containsSubstring:@"linux mint"] ||
 	    [isoName containsSubstring:@"elementary"] || // for Loki, and possibly Freya
 	    [isoName containsSubstring:@"+mac"]) {
-		useOldMacVersion = YES;
+		self.lacksEfiEnabledKernelCheckbox.state = NSOnState;
 	} else {
-		useOldMacVersion = NO;
+		self.lacksEfiEnabledKernelCheckbox.state = NSOffState;
 	}
 }
 
@@ -347,8 +344,8 @@ get_bookmarks:
 	SBLinuxDistribution distribution = [self.distributionSelectorPopup selectedTag];
 	[SBEnterpriseConfigurationWriter writeConfigurationFileAtUSB:selectedUSBDrive
 											  distributionFamily:distribution
-													 isMacUbuntu:useOldMacVersion
-									 containsLegacyUbuntuVersion:(self.isLegacyUbuntuVersionCheckBox).state == NSOnState
+										     lacksEfiEnabledKernel:(self.lacksEfiEnabledKernelCheckbox).state == NSOnState
+									 containsLegacyUbuntuVersion:NO
 											  shouldSkipBootMenu:(self.shouldSkipBootMenuCheckbox).state == NSOnState];
 
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -393,7 +390,7 @@ get_bookmarks:
 	(self.installationProgressBar).indeterminate = enabled;
 	(self.installationProgressBar).doubleValue = 0.0;
 	(self.distributionSelectorPopup).enabled = enabled;
-	(self.isLegacyUbuntuVersionCheckBox).enabled = enabled;
+	(self.lacksEfiEnabledKernelCheckbox).enabled = enabled;
 	(self.shouldSkipBootMenuCheckbox).enabled = enabled;
 	(self.usbDriveSelector).hidden = !enabled;
 	(self.enterpriseSourceSelector).enabled = enabled;
@@ -439,8 +436,8 @@ get_bookmarks:
 
 - (IBAction)distributionTypePopupChanged:(NSPopUpButton *)sender {
 	BOOL isUbuntuSelected = (sender.selectedTag == SBDistributionUbuntu);
-	(self.isLegacyUbuntuVersionCheckBox).transparent = (isUbuntuSelected ? NO : YES);
-	(self.isLegacyUbuntuVersionCheckBox).enabled = isUbuntuSelected;
+	(self.lacksEfiEnabledKernelCheckbox).transparent = (isUbuntuSelected ? NO : YES);
+	(self.lacksEfiEnabledKernelCheckbox).enabled = isUbuntuSelected;
 	(self.shouldSkipBootMenuCheckbox).transparent = (sender.selectedTag == SBDistributionUnknown);
 }
 

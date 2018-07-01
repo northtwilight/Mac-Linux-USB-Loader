@@ -75,7 +75,7 @@
 	return YES;
 }
 
-+ (void)writeConfigurationFileAtUSB:(SBUSBDevice *)device distributionFamily:(SBLinuxDistribution)family isMacUbuntu:(BOOL)isMacUbuntu containsLegacyUbuntuVersion:(BOOL)containsLegacyUbuntu shouldSkipBootMenu:(BOOL)shouldSkip {
++ (void)writeConfigurationFileAtUSB:(SBUSBDevice *)device distributionFamily:(SBLinuxDistribution)family lacksEfiEnabledKernel:(BOOL)efiDisabled containsLegacyUbuntuVersion:(BOOL)containsLegacyUbuntu shouldSkipBootMenu:(BOOL)shouldSkip {
 	NSError *error;
 	NSString *distributionId = [SBAppDelegate distributionStringForEquivalentEnum:family];
 
@@ -93,7 +93,7 @@
 
 			// I know that this seems a bit redundant, checking for legacy Ubuntu twice, but we have to because if we don't,
 			// it would be impossible to have both options be enabled.
-			if (isMacUbuntu) {
+			if (efiDisabled) {
 				[kernelString appendString:@"/casper/vmlinuz "];
 				if (containsLegacyUbuntu) {
 					[kernelString appendString:@"file=/cdrom/preseed/ubuntu.seed"];

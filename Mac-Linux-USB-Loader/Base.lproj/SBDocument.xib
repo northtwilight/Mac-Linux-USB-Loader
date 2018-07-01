@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,8 +13,8 @@
                 <outlet property="distributionSelectorPopup" destination="FN5-Ti-WuH" id="DsR-ip-ZTA"/>
                 <outlet property="enterpriseSourceSelector" destination="3qA-qj-K0g" id="SDh-QA-Ih3"/>
                 <outlet property="forwardButton" destination="CDL-Pn-5VN" id="04o-0r-cid"/>
+                <outlet property="hasEfiEnabledKernelCheckbox" destination="3yc-Pg-5C8" id="nlw-Q4-pWJ"/>
                 <outlet property="installationProgressBar" destination="bdV-ll-emw" id="Ct4-mC-KVI"/>
-                <outlet property="isMacVersionCheckBox" destination="3yc-Pg-5C8" id="adc-FA-NYx"/>
                 <outlet property="shouldSkipBootMenuCheckbox" destination="ZcM-fL-Xsr" id="Ucw-r6-X8M"/>
                 <outlet property="sideView" destination="KuY-po-env" id="yYL-I8-auy"/>
                 <outlet property="tabView" destination="3b6-2Y-5OI" id="GT0-l0-3dB"/>
