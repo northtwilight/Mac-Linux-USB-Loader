@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -442,10 +442,10 @@
             <point key="canvasLocation" x="166" y="28"/>
         </menu>
         <customObject id="419" customClass="NSFontManager"/>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="eVZ-OT-8Zw" userLabel="Main Window">
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="eVZ-OT-8Zw" userLabel="Main Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES"/>
             <rect key="contentRect" x="90" y="307" width="664" height="341"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <value key="minSize" type="size" width="664" height="341"/>
             <view key="contentView" id="tKZ-SI-zXF">
                 <rect key="frame" x="0.0" y="0.0" width="664" height="341"/>
@@ -455,8 +455,8 @@
                         <rect key="frame" x="18" y="291" width="277" height="30"/>
                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mac Linux USB Loader" id="PbZ-Px-5X8">
                             <font key="font" metaFont="system" size="25"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="85" horizontalPageScroll="10" verticalLineScroll="85" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0M-0W-Ded">
@@ -473,7 +473,7 @@
                                     <tableViewGridLines key="gridStyleMask" dashed="YES"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="" width="359" minWidth="10" maxWidth="3.4028234663852886e+38" id="Ra8-EM-VaU">
+                                        <tableColumn width="359" minWidth="10" maxWidth="3.4028234663852886e+38" id="Ra8-EM-VaU">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -575,7 +575,7 @@
                     <constraint firstItem="v0M-0W-Ded" firstAttribute="leading" secondItem="Pda-w3-ql6" secondAttribute="trailing" constant="8" id="pYX-Su-UsJ"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="904" y="524.5"/>
+            <point key="canvasLocation" x="1165" y="503"/>
         </window>
         <menu id="F19-pk-eIT" userLabel="Dock Menu">
             <items>

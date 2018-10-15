@@ -80,7 +80,6 @@
 	(self.downloadQueueDataSource).prefsViewController = self;
 	(self.downloadQueueDataSource).tableView = self.downloadQueueTableView;
 	(self.tableView).doubleAction = @selector(tableViewDoubleClickAction);
-	[self.webView setDrawsBackground:NO];
 
 	self.distroISOPathLabel.stringValue = @"";
 	self.viewInFinderButton.enabled = NO;
@@ -366,9 +365,7 @@
 		// There are multiple articles on Wikipedia with the name "Ubuntu", so we have to
 		// be specific and specify exactly what we want if we need to download Ubuntu's info.
 		if ([selectedLinuxDistribution isEqualToString:@"Ubuntu"]) {
-			if ([language isEqualToString:@"en"]) {
-				selectedLinuxDistribution = @"Ubuntu (operating system)";
-			} else if ([language isEqualToString:@"nl"]) {
+			if ([language isEqualToString:@"nl"]) {
 				selectedLinuxDistribution = @"Ubuntu (Linuxdistributie)";
 			} else if ([language isEqualToString:@"nb"]) {
 				selectedLinuxDistribution = @"Ubuntu (operativsystem)";
@@ -397,9 +394,7 @@
 			return;
 		}
 
-		NSDictionary *outputDictionary = [NSJSONSerialization JSONObjectWithData:response
-																		 options:0
-																		   error:nil];
+		NSDictionary *outputDictionary = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
 		NSDictionary *targetDictionary = outputDictionary[@"query"][@"pages"];
 
 		__block NSString *desiredKey = nil;

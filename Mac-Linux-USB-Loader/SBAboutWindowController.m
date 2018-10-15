@@ -58,6 +58,7 @@
 - (IBAction)showAcknowledgementsButtonPressed:(NSButton *)sender {
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"Acknowledgements" ofType:@"rtf"];
 	[self.acknowledgementsText readRTFDFromFile:path];
+	[self.acknowledgementsText setTextColor:NSColor.textColor];
 	[self.acknowledgementsPanel makeKeyAndOrderFront:nil];
 	(self.acknowledgementsPanel).title = sender.title;
 }
@@ -65,6 +66,7 @@
 - (IBAction)showLicenseAgreementButtonPressed:(NSButton *)sender {
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"Credits" ofType:@"rtf"];
 	[self.acknowledgementsText readRTFDFromFile:path];
+	[self.acknowledgementsText setTextColor:NSColor.textColor];
 	[self.acknowledgementsPanel makeKeyAndOrderFront:nil];
 	(self.acknowledgementsPanel).title = sender.title;
 }

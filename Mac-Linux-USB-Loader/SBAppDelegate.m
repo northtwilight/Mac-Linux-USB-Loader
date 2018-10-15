@@ -90,8 +90,11 @@ const NSString *SBBundledEnterpriseVersionNumber = @"0.4.1";
 
 - (void)setupWelcomeScreenUI {
 	// Make the window background white.
-	self.window.backgroundColor = NSColor.whiteColor;
 	self.window.movableByWindowBackground = NO;
+	if ([NSColor respondsToSelector:@selector(underPageBackgroundColor)])
+		self.window.backgroundColor = NSColor.windowBackgroundColor;
+	else
+		self.window.backgroundColor = NSColor.whiteColor;
 
 	// Remove the standard window buttons.
 	[[self.window standardWindowButton:NSWindowZoomButton] setHidden:YES];
@@ -104,7 +107,6 @@ const NSString *SBBundledEnterpriseVersionNumber = @"0.4.1";
 		self.window.styleMask = self.window.styleMask | NSFullSizeContentViewWindowMask;
 		self.window.titleVisibility = NSWindowTitleHidden;
 		self.window.titlebarAppearsTransparent = YES;
-		self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantLight];
 		self.operationsTableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyleSourceList;
 		self.operationsTableView.usesAlternatingRowBackgroundColors = NO;
 		[self.window layoutIfNeeded];
