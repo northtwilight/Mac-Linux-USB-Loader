@@ -437,9 +437,9 @@ get_bookmarks:
 
 - (IBAction)distributionTypePopupChanged:(NSPopUpButton *)sender {
 	BOOL isUbuntuSelected = (sender.selectedTag == SBDistributionUbuntu);
-	(self.lacksEfiEnabledKernelCheckbox).transparent = (isUbuntuSelected ? NO : YES);
+	(self.lacksEfiEnabledKernelCheckbox).hidden = (isUbuntuSelected ? NO : YES);
 	(self.lacksEfiEnabledKernelCheckbox).enabled = isUbuntuSelected;
-	(self.shouldSkipBootMenuCheckbox).transparent = (sender.selectedTag == SBDistributionUnknown);
+	(self.shouldSkipBootMenuCheckbox).hidden = (sender.selectedTag == SBDistributionUnknown);
 }
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
