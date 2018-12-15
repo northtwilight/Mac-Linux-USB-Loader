@@ -21,10 +21,10 @@
 - (void)setSelected:(BOOL)selected {
 	_selected = selected;
 
-	if (selected) {
-		((NSTextField *)self.subviews[0]).textColor = [NSColor alternateSelectedControlTextColor];
+	if (!selected) {
+		((NSTextField *)self.subviews[0]).textColor = [NSColor controlTextColor];
 	} else {
-		((NSTextField *)self.subviews[0]).textColor = [NSColor blackColor];
+		((NSTextField *)self.subviews[0]).textColor = [NSColor alternateSelectedControlTextColor];
 	}
 }
 
