@@ -108,6 +108,7 @@
 	// first check box since we need it so that the correct kernel path will be written.
 	if ([isoName containsSubstring:@"linuxmint"] ||
 	    [isoName containsSubstring:@"linux mint"] ||
+		[isoName containsSubstring:@"ubuntu"] ||
 	    [isoName containsSubstring:@"elementary"] || // for Loki, and possibly Freya
 	    [isoName containsSubstring:@"+mac"]) {
 		self.lacksEfiEnabledKernelCheckbox.state = NSOnState;
