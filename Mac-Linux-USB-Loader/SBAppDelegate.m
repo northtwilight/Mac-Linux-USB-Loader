@@ -302,16 +302,15 @@ const NSString *SBBundledEnterpriseVersionNumber = @"0.4.1";
 	}
 
 	NSArray *volumes = [self->fileManager mountedVolumeURLsIncludingResourceValuesForKeys:nil options:0];
-	BOOL isRemovable, isWritable, isUnmountable;
+	BOOL isWritable;
 	NSString *description, *volumeType;
 
 	BOOL acceptHFSDrives = [NSUserDefaults.standardUserDefaults boolForKey:@"AcceptHFSDrives"];
-    BOOL acceptHardDrives = [NSUserDefaults.standardUserDefaults boolForKey:@"AcceptHardDrives"];
 
 	for (NSURL *mountURL in volumes) {
 		NSString *usbDeviceMountPoint = mountURL.path;
-		if ([NSWorkspace.sharedWorkspace getFileSystemInfoForPath:usbDeviceMountPoint isRemovable:&isRemovable isWritable:&isWritable isUnmountable:&isUnmountable description:&description type:&volumeType]) {
-			if (isWritable && (acceptHardDrives || (isRemovable && isUnmountable))) {
+		if ([NSWorkspace.sharedWorkspace getFileSystemInfoForPath:usbDeviceMountPoint isRemovable:NULL isWritable:&isWritable isUnmountable:NULL description:&description type:&volumeType]) {
+			if (isWritable) {
 #ifdef DEBUG
 				NSLog(@"Detected potentially eligible volume at %@. Type: %@", usbDeviceMountPoint, volumeType);
 #endif
@@ -320,8 +319,11 @@ const NSString *SBBundledEnterpriseVersionNumber = @"0.4.1";
 					// Don't include the root partition in the list of external media.
 					continue;
 				} else {
-					if ([volumeType isEqualToString:@"msdos"] ||
-					    ([volumeType isEqualToString:@"hfs"] && acceptHFSDrives)) {
+					BOOL isValidFormat = [volumeType isEqualToString:@"msdos"];
+					isValidFormat |= [volumeType isEqualToString:@"hfs"] && acceptHFSDrives;
+					isValidFormat |= [volumeType isEqualToString:@"apfs"] && acceptHFSDrives;
+
+					if (isValidFormat) {
 #ifdef DEBUG
 						NSLog(@"Adding %@ to list of USB devices.", usbDeviceMountPoint);
 #endif
