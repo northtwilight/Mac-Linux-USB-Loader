@@ -320,8 +320,8 @@ const NSString *SBBundledEnterpriseVersionNumber = @"0.4.1";
 					continue;
 				} else {
 					BOOL isValidFormat = [volumeType isEqualToString:@"msdos"];
-					isValidFormat |= [volumeType isEqualToString:@"hfs"] && acceptHFSDrives;
-					isValidFormat |= [volumeType isEqualToString:@"apfs"] && acceptHFSDrives;
+					isValidFormat |= acceptHFSDrives && [volumeType isEqualToString:@"hfs"];
+					isValidFormat |= acceptHFSDrives && [volumeType isEqualToString:@"apfs"];
 
 					if (isValidFormat) {
 #ifdef DEBUG
