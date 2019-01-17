@@ -22,6 +22,8 @@
 		2420BA3019A2660A00208240 /* NSImage+SaveToFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2420BA2F19A2660A00208240 /* NSImage+SaveToFile.m */; };
 		24245F3218D222250085C43F /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 24245F3118D222250085C43F /* NSString+Extensions.m */; };
 		2424764C194A180A0083033B /* NSProcessInfo+PECocoaBackports.m in Sources */ = {isa = PBXBuildFile; fileRef = 2424764B194A180A0083033B /* NSProcessInfo+PECocoaBackports.m */; };
+		2424FE3D21F1152300B62C80 /* SBPersistenceCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2424FE3C21F1152300B62C80 /* SBPersistenceCreator.m */; };
+		2424FE4021F116E600B62C80 /* SBEnterpriseInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2424FE3F21F116E600B62C80 /* SBEnterpriseInstaller.m */; };
 		2429600F1BC9D8CC00AB8445 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2429600E1BC9D8CC00AB8445 /* WebKit.framework */; };
 		242E92BA1CF201A40096DECA /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 242E92B41CF200260096DECA /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		242E92BB1CF202140096DECA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 242E92B41CF200260096DECA /* Sparkle.framework */; };
@@ -178,6 +180,10 @@
 		2424AD831AB37EE4004610EC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SBEnterprisePreferencesViewController.strings; sourceTree = "<group>"; };
 		2424AD841AB37EE4004610EC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/SBDistributionDownloaderPreferencesViewController.strings; sourceTree = "<group>"; };
 		2424AD851AB37EE4004610EC /* nl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2424FE3B21F1152300B62C80 /* SBPersistenceCreator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBPersistenceCreator.h; sourceTree = "<group>"; };
+		2424FE3C21F1152300B62C80 /* SBPersistenceCreator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBPersistenceCreator.m; sourceTree = "<group>"; };
+		2424FE3E21F116E600B62C80 /* SBEnterpriseInstaller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBEnterpriseInstaller.h; sourceTree = "<group>"; };
+		2424FE3F21F116E600B62C80 /* SBEnterpriseInstaller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBEnterpriseInstaller.m; sourceTree = "<group>"; };
 		2429600E1BC9D8CC00AB8445 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		242E92B41CF200260096DECA /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Dependencies/Sparkle.framework; sourceTree = "<group>"; };
 		2440840C1D88D0C7009F417C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -582,6 +588,10 @@
 				24D39C0518DA45FE0043C38F /* SBUSBDeviceCollectionViewRepresentation.m */,
 				24D75F97188AEC2300FF5ADC /* SBUSBDevice.h */,
 				24D75F98188AEC2300FF5ADC /* SBUSBDevice.m */,
+				2424FE3E21F116E600B62C80 /* SBEnterpriseInstaller.h */,
+				2424FE3F21F116E600B62C80 /* SBEnterpriseInstaller.m */,
+				2424FE3B21F1152300B62C80 /* SBPersistenceCreator.h */,
+				2424FE3C21F1152300B62C80 /* SBPersistenceCreator.m */,
 				24764FFE19831FE800E4F9B0 /* SBDistributionDownloaderDownloadsDataSource.h */,
 				24764FFF19831FE800E4F9B0 /* SBDistributionDownloaderDownloadsDataSource.m */,
 			);
@@ -862,6 +872,7 @@
 				2420475018849C8B00ECAAFE /* SBAppDelegate.m in Sources */,
 				24245F3218D222250085C43F /* NSString+Extensions.m in Sources */,
 				24B29B5A193270970009C3D8 /* SBDownloadMirrorModel.m in Sources */,
+				2424FE3D21F1152300B62C80 /* SBPersistenceCreator.m in Sources */,
 				2412CAEC1960E9E700501D7A /* DownloadOperation.m in Sources */,
 				24B9F037189870D6002A3697 /* NSFileManager+DirectoryLocations.m in Sources */,
 				24B322FA18A00E4900A5E25E /* SBGeneralPreferencesViewController.m in Sources */,
@@ -882,6 +893,7 @@
 				2415E65C196766FB00D26A4C /* SBDistributionDownloaderPreferencesViewController.m in Sources */,
 				24B29B5719326F6C0009C3D8 /* SBDownloadableDistributionModel.m in Sources */,
 				240F98A118B060AD001EAE87 /* SBEnterpriseSourceLocation.m in Sources */,
+				2424FE4021F116E600B62C80 /* SBEnterpriseInstaller.m in Sources */,
 				245A2A8D1AB4A81E00D3C021 /* SBUpdatePreferencesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,7 @@
 #import "SBUSBSetupWindowController.h"
 #import "SBAppDelegate.h"
 #import "SBUSBDevice.h"
+#import "SBEnterpriseInstaller.h"
 
 @interface SBUSBSetupWindowController ()
 
@@ -91,7 +92,7 @@
 			}
 
 			[outURL startAccessingSecurityScopedResource];
-			[selectedDrive enableStartupDiskSupport];
+			[SBEnterpriseInstaller enableStartupDiskSupportForUSB:selectedDrive];
 			[outURL stopAccessingSecurityScopedResource];
 		}
 	}

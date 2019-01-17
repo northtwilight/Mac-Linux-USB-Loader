@@ -11,6 +11,7 @@
 #import "SBEnterpriseConfigurationWriter.h"
 #import "SBEnterpriseSourceLocation.h"
 #import "SBUSBDevice.h"
+#import "SBEnterpriseInstaller.h"
 #import "SBUSBDeviceCollectionViewRepresentation.h"
 
 @interface SBDocument ()
@@ -351,8 +352,9 @@ get_bookmarks:
 
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		SBEnterpriseSourceLocation *sourceLocation = ((SBAppDelegate *)NSApp.delegate).enterpriseInstallLocations[selectedEnterpriseSourceName];
-		[selectedUSBDrive copyEnterpriseFiles:self withEnterpriseSource:sourceLocation];
-		[selectedUSBDrive copyInstallationFiles:self];
+		SBEnterpriseInstaller *installer = [[SBEnterpriseInstaller alloc] initWithAttachedDocument:self];
+		[installer copyEnterpriseFilesToUSB:selectedUSBDrive andEnterpriseSource:sourceLocation];
+		[installer copyInstallationFilesToUSB:selectedUSBDrive withSourceISOPath:self.fileURL.path];
 
 		dispatch_async(dispatch_get_main_queue(), ^{
 			/* STEP 4: Restore access to the disabled buttons. */

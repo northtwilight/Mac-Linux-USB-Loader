@@ -9,6 +9,7 @@
 #import "SBPersistenceManagerWindowController.h"
 #import "SBAppDelegate.h"
 #import "SBUSBDevice.h"
+#import "SBPersistenceCreator.h"
 
 @interface SBPersistenceManagerWindowController ()
 
@@ -127,9 +128,10 @@
 
 	            [self.spinner startAnimation:nil];
 	            [self.operationProgressLabel setStringValue:NSLocalizedString(@"Creating persistence file...", nil)];
-				[SBUSBDevice createPersistenceFileAtUSB:self->spanel.URL.path withSize:persistenceSizeInBytes withWindow:self.window];
+				[SBPersistenceCreator createPersistenceFileAtPath:self->spanel.URL.path
+				                      withSize:persistenceSizeInBytes];
 	            [self.operationProgressLabel setStringValue:NSLocalizedString(@"Creating virtual loopback filesystem...", nil)];
-				[SBUSBDevice createLoopbackPersistence:self->spanel.URL.path];
+				[SBPersistenceCreator createLoopbackPersistenceInFile:self->spanel.URL.path];
 
 	            // Enable everything that was disabled.
 	            dispatch_async(dispatch_get_main_queue(), ^{
