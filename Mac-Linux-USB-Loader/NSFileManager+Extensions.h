@@ -11,6 +11,15 @@
 @interface NSFileManager (Extensions)
 
 /**
+ * Toggles whether or not the specified path should be visible.
+ *
+ * @param filename The path name to toggle the visibility of.
+ * @param isDirectory Whether the path refers to a directory.
+ * @return YES if the operation was successful, NO otherwise.
+ */
++ (BOOL)toggleVisibilityForFile:(NSString *)filename isDirectory:(BOOL)isDirectory;
+
+/**
  * A custom extension to NSFileManager that provides an easy way to get the size of a file.
  *
  * @param path The path to the target file.

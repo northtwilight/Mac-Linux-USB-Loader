@@ -24,6 +24,7 @@
 		2424764C194A180A0083033B /* NSProcessInfo+PECocoaBackports.m in Sources */ = {isa = PBXBuildFile; fileRef = 2424764B194A180A0083033B /* NSProcessInfo+PECocoaBackports.m */; };
 		2424FE3D21F1152300B62C80 /* SBPersistenceCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2424FE3C21F1152300B62C80 /* SBPersistenceCreator.m */; };
 		2424FE4021F116E600B62C80 /* SBEnterpriseInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2424FE3F21F116E600B62C80 /* SBEnterpriseInstaller.m */; };
+		2424FE4421F1720300B62C80 /* SBUbuntuConfigurationWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2424FE4321F1720300B62C80 /* SBUbuntuConfigurationWriter.m */; };
 		2429600F1BC9D8CC00AB8445 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2429600E1BC9D8CC00AB8445 /* WebKit.framework */; };
 		242E92BA1CF201A40096DECA /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 242E92B41CF200260096DECA /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		242E92BB1CF202140096DECA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 242E92B41CF200260096DECA /* Sparkle.framework */; };
@@ -64,6 +65,7 @@
 		24D75F90188AE75E00FF5ADC /* SBUSBSetupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D75F8E188AE75E00FF5ADC /* SBUSBSetupWindowController.m */; };
 		24D75F92188AE77100FF5ADC /* SBUSBSetupWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24D75F94188AE77100FF5ADC /* SBUSBSetupWindowController.xib */; };
 		24D75F99188AEC2300FF5ADC /* SBUSBDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D75F98188AEC2300FF5ADC /* SBUSBDevice.m */; };
+		24D8018E221A0B25007F6719 /* SBDebianConfigurationWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D8018D221A0B25007F6719 /* SBDebianConfigurationWriter.m */; };
 		24E0A595191D7CFF0043C24A /* SBDistributionDownloaderWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E0A593191D7CFF0043C24A /* SBDistributionDownloaderWindowController.m */; };
 		24E4F8D3196A0DF4002767C8 /* NSAlert+Popover.m in Sources */ = {isa = PBXBuildFile; fileRef = 24E4F8D2196A0DF4002767C8 /* NSAlert+Popover.m */; };
 		24E6AB0519849611002CA3C9 /* boot.efi in Copy Enterprise Files */ = {isa = PBXBuildFile; fileRef = 24E6AB01198495E7002CA3C9 /* boot.efi */; };
@@ -184,6 +186,8 @@
 		2424FE3C21F1152300B62C80 /* SBPersistenceCreator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBPersistenceCreator.m; sourceTree = "<group>"; };
 		2424FE3E21F116E600B62C80 /* SBEnterpriseInstaller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBEnterpriseInstaller.h; sourceTree = "<group>"; };
 		2424FE3F21F116E600B62C80 /* SBEnterpriseInstaller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBEnterpriseInstaller.m; sourceTree = "<group>"; };
+		2424FE4221F1720300B62C80 /* SBUbuntuConfigurationWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBUbuntuConfigurationWriter.h; sourceTree = "<group>"; };
+		2424FE4321F1720300B62C80 /* SBUbuntuConfigurationWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBUbuntuConfigurationWriter.m; sourceTree = "<group>"; };
 		2429600E1BC9D8CC00AB8445 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		242E92B41CF200260096DECA /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Dependencies/Sparkle.framework; sourceTree = "<group>"; };
 		2440840C1D88D0C7009F417C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -328,6 +332,8 @@
 		24D75F93188AE77100FF5ADC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SBUSBSetupWindowController.xib; sourceTree = "<group>"; };
 		24D75F97188AEC2300FF5ADC /* SBUSBDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBUSBDevice.h; sourceTree = "<group>"; };
 		24D75F98188AEC2300FF5ADC /* SBUSBDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBUSBDevice.m; sourceTree = "<group>"; };
+		24D8018C221A0B25007F6719 /* SBDebianConfigurationWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBDebianConfigurationWriter.h; sourceTree = "<group>"; };
+		24D8018D221A0B25007F6719 /* SBDebianConfigurationWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBDebianConfigurationWriter.m; sourceTree = "<group>"; };
 		24D808C61B41A87600C95744 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SBDocument.strings; sourceTree = "<group>"; };
 		24D808C71B41A87600C95744 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SBAboutWindowController.strings; sourceTree = "<group>"; };
 		24D808C81B41A87600C95744 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/SBUSBSetupWindowController.strings; sourceTree = "<group>"; };
@@ -416,6 +422,19 @@
 				2420BA2F19A2660A00208240 /* NSImage+SaveToFile.m */,
 			);
 			name = "Apple Class Extensions and Subclasses";
+			sourceTree = "<group>";
+		};
+		2424FE4121F171D200B62C80 /* Configuration Writers */ = {
+			isa = PBXGroup;
+			children = (
+				240FE87E19FB0D11004096C7 /* SBEnterpriseConfigurationWriter.h */,
+				240FE87F19FB0D11004096C7 /* SBEnterpriseConfigurationWriter.m */,
+				24D8018C221A0B25007F6719 /* SBDebianConfigurationWriter.h */,
+				24D8018D221A0B25007F6719 /* SBDebianConfigurationWriter.m */,
+				2424FE4221F1720300B62C80 /* SBUbuntuConfigurationWriter.h */,
+				2424FE4321F1720300B62C80 /* SBUbuntuConfigurationWriter.m */,
+			);
+			name = "Configuration Writers";
 			sourceTree = "<group>";
 		};
 		24A4EC6A1884966900CE6CF0 = {
@@ -571,6 +590,7 @@
 		24D75F96188AEBCC00FF5ADC /* Core Classes and XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				2424FE4121F171D200B62C80 /* Configuration Writers */,
 				2412CAEA1960E9E700501D7A /* DownloadOperation.h */,
 				2412CAEB1960E9E700501D7A /* DownloadOperation.m */,
 				24B9F03418986EE4002A3697 /* SBGlobals.h */,
@@ -579,8 +599,6 @@
 				24A4EC8E1884966A00CE6CF0 /* MainMenu.xib */,
 				240F989F18B060AD001EAE87 /* SBEnterpriseSourceLocation.h */,
 				240F98A018B060AD001EAE87 /* SBEnterpriseSourceLocation.m */,
-				240FE87E19FB0D11004096C7 /* SBEnterpriseConfigurationWriter.h */,
-				240FE87F19FB0D11004096C7 /* SBEnterpriseConfigurationWriter.m */,
 				24A4EC881884966A00CE6CF0 /* SBDocument.h */,
 				24A4EC891884966A00CE6CF0 /* SBDocument.m */,
 				24A4EC8B1884966A00CE6CF0 /* SBDocument.xib */,
@@ -644,7 +662,6 @@
 				24155CC418903AD200FAB98C /* Copy mke2fs */,
 				24743B6C18BBE6E1008B5458 /* Copy Enterprise Files */,
 				246AFF831E0C4938001AD081 /* Copy XPC Services */,
-				23CEDE1621F57F74D2B40B86 /* [CP] Embed Pods Frameworks */,
 				B68F4842EA4D3222B5C0E7CB /* [CP] Copy Pods Resources */,
 				242E92B81CF200380096DECA /* Embed Frameworks */,
 			);
@@ -665,8 +682,6 @@
 				24A4EC931884966A00CE6CF0 /* Sources */,
 				24A4EC941884966A00CE6CF0 /* Frameworks */,
 				24A4EC951884966A00CE6CF0 /* Resources */,
-				722DCB879FE10ECD835EE403 /* [CP] Embed Pods Frameworks */,
-				86DC207A43C8B95B3F02CCEA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -768,34 +783,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		23CEDE1621F57F74D2B40B86 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mac Linux USB Loader/Pods-Mac Linux USB Loader-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4F3F6972FB1C5E258B1AE7D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mac Linux USB LoaderTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		666BF4E42EADEB61B21C5F57 /* [CP] Check Pods Manifest.lock */ = {
@@ -804,43 +807,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mac Linux USB Loader-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		722DCB879FE10ECD835EE403 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mac Linux USB LoaderTests/Pods-Mac Linux USB LoaderTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		86DC207A43C8B95B3F02CCEA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mac Linux USB LoaderTests/Pods-Mac Linux USB LoaderTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B68F4842EA4D3222B5C0E7CB /* [CP] Copy Pods Resources */ = {
@@ -849,9 +825,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mac Linux USB Loader/Pods-Mac Linux USB Loader-resources.sh",
+				"${PODS_ROOT}/RHPreferences/RHPreferences/RHPreferencesWindow.xib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RHPreferencesWindow.nib",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -870,6 +849,7 @@
 				2424764C194A180A0083033B /* NSProcessInfo+PECocoaBackports.m in Sources */,
 				24101B881896D4A300EDE32C /* SBAboutWindowController.m in Sources */,
 				2420475018849C8B00ECAAFE /* SBAppDelegate.m in Sources */,
+				24D8018E221A0B25007F6719 /* SBDebianConfigurationWriter.m in Sources */,
 				24245F3218D222250085C43F /* NSString+Extensions.m in Sources */,
 				24B29B5A193270970009C3D8 /* SBDownloadMirrorModel.m in Sources */,
 				2424FE3D21F1152300B62C80 /* SBPersistenceCreator.m in Sources */,
@@ -890,6 +870,7 @@
 				24D75F90188AE75E00FF5ADC /* SBUSBSetupWindowController.m in Sources */,
 				249DF3F2189D7A3F00FECE0A /* NSFileManager+Extensions.m in Sources */,
 				240FE88019FB0D11004096C7 /* SBEnterpriseConfigurationWriter.m in Sources */,
+				2424FE4421F1720300B62C80 /* SBUbuntuConfigurationWriter.m in Sources */,
 				2415E65C196766FB00D26A4C /* SBDistributionDownloaderPreferencesViewController.m in Sources */,
 				24B29B5719326F6C0009C3D8 /* SBDownloadableDistributionModel.m in Sources */,
 				240F98A118B060AD001EAE87 /* SBEnterpriseSourceLocation.m in Sources */,

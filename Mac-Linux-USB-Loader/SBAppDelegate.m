@@ -528,10 +528,12 @@ const NSString *SBBundledEnterpriseVersionNumber = @"0.4.1";
 	NSString *fileName = path.lowercaseString.lastPathComponent;
 	if ([fileName containsSubstring:@"tails"]) {
 		return SBDistributionTails;
-	} else if ([fileName containsSubstring:@"ubuntu"] ||
-			   [fileName containsSubstring:@"mint"] ||
-			   [fileName containsSubstring:@"elementary"]) {
+	} else if ([fileName containsSubstring:@"ubuntu"]) {
 		return SBDistributionUbuntu;
+	} else if ([fileName containsSubstring:@"mint"]) {
+		return SBDistributionLinuxMint;
+	} else if ([fileName containsSubstring:@"elementary"]) {
+		return SBDistributionElementaryOS;
 	} else if ([fileName containsSubstring:@"kali"]) {
 		return SBDistributionKali;
 	} else if ([fileName containsSubstring:@"debian"]) {

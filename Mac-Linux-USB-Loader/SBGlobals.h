@@ -24,6 +24,10 @@ extern NSString *SBBundledEnterpriseVersionNumber;
 typedef NS_ENUM (NSInteger, SBLinuxDistribution) {
 	/// An enum type representing the Ubuntu Linux distribution.
 	SBDistributionUbuntu = 0,
+	/// An enum type representing the Linux Mint distribution.
+	SBDistributionLinuxMint,
+	/// An enum type representing the elementary OS distribution.
+	SBDistributionElementaryOS,
 	/// An enum type representing the Debian Linux distribution.
 	SBDistributionDebian,
 	/// An enum type representing the Tails Linux distribution.

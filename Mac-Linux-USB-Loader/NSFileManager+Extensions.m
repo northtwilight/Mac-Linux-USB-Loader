@@ -13,6 +13,68 @@
 
 NSOpenPanel *spanel;
 
++ (BOOL)toggleVisibilityForFile:(NSString *)filename isDirectory:(BOOL)isDirectory
+{
+	// Convert the pathname to HFS+
+	FSRef fsRef;
+	CFURLRef url = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)filename, kCFURLPOSIXPathStyle, isDirectory);
+
+	if (!url)
+	{
+		NSLog(@"Error creating CFURL for %@.", filename);
+		return NO;
+	}
+	
+	if (!CFURLGetFSRef(url, &fsRef))
+	{
+		NSLog(@"Error creating FSRef for %@.", filename);
+		CFRelease(url);
+		return NO;
+	}
+	
+	CFRelease(url);
+	
+	// Get the file's catalog info
+	FSCatalogInfo *catalogInfo = (FSCatalogInfo *)malloc(sizeof(FSCatalogInfo));
+	
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+	OSErr err = FSGetCatalogInfo(&fsRef, kFSCatInfoFinderInfo, catalogInfo, NULL, NULL, NULL);
+#pragma clang diagnostic pop
+	
+	if (err != noErr)
+	{
+		NSLog(@"Error getting catalog info for %@. The error returned was: %d", filename, err);
+		free(catalogInfo);
+		return NO;
+	}
+	
+	// Extract the Finder info from the FSRef's catalog info
+	FInfo *info = (FInfo *)(&catalogInfo->finderInfo[0]);
+	
+	// Toggle the invisibility flag
+	if (info->fdFlags & kIsInvisible)
+		info->fdFlags &= ~kIsInvisible;
+	else
+		info->fdFlags |= kIsInvisible;
+	
+	// Update the file's visibility
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+	err = FSSetCatalogInfo(&fsRef, kFSCatInfoFinderInfo, catalogInfo);
+#pragma clang diagnostic pop
+	
+	if (err != noErr)
+	{
+		NSLog(@"Error setting visibility bit for %@. The error returned was: %d", filename, err);
+		free(catalogInfo);
+		return NO;
+	}
+	
+	free(catalogInfo);
+	return YES;
+}
+
 - (NSNumber *)sizeOfFileAtPath:(NSString *)path {
 	NSNumber *mySize = @([[self attributesOfItemAtPath:path error:nil] fileSize]);
 	return mySize;

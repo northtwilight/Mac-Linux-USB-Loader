@@ -33,11 +33,53 @@
 	device.path = NSTemporaryDirectory();
 	NSString *directory = [device.path stringByAppendingPathComponent:@"/efi/boot/"];
 	[[NSFileManager defaultManager] createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:NULL];
-
+	
 	NSString *fileName = [directory stringByAppendingPathComponent:@"enterprise.cfg"];
 	NSLog(@"Writing to: %@", device.path);
+	
+	SBEnterpriseConfigurationWriter *writer = [SBEnterpriseConfigurationWriter writerForDistributionType:SBDistributionKali];
+	SBEnterpriseConfigurationWriterSettings settings = { 0 };
+	[writer writeConfigurationToFile:fileName withSettings:settings andError:nil];
+	if (![[NSFileManager defaultManager] fileExistsAtPath:fileName isDirectory:NULL]) {
+		XCTFail(@"File doesn't exist.");
+	} else if (![[NSWorkspace sharedWorkspace] openFile:fileName withApplication:@"TextEdit"]) {
+		XCTFail(@"Quarantine bit is set");
+	}
+}
 
-	[SBEnterpriseConfigurationWriter writeConfigurationFileAtUSB:device distributionFamily:SBDistributionKali lacksEfiEnabledKernel:NO containsLegacyUbuntuVersion:NO shouldSkipBootMenu:NO];
+- (void)testCreateLinuxMintConfigurationFile {
+	//XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+	SBUSBDevice *device = [[SBUSBDevice alloc] init];
+	device.path = NSTemporaryDirectory();
+	NSString *directory = [device.path stringByAppendingPathComponent:@"/efi/boot/"];
+	[[NSFileManager defaultManager] createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:NULL];
+	
+	NSString *fileName = [directory stringByAppendingPathComponent:@"enterprise.cfg"];
+	NSLog(@"Writing to: %@", device.path);
+	
+	SBEnterpriseConfigurationWriter *writer = [SBEnterpriseConfigurationWriter writerForDistributionType:SBDistributionLinuxMint];
+	SBEnterpriseConfigurationWriterSettings settings = { 0 };
+	[writer writeConfigurationToFile:fileName withSettings:settings andError:nil];
+	if (![[NSFileManager defaultManager] fileExistsAtPath:fileName isDirectory:NULL]) {
+		XCTFail(@"File doesn't exist.");
+	} else if (![[NSWorkspace sharedWorkspace] openFile:fileName withApplication:@"TextEdit"]) {
+		XCTFail(@"Quarantine bit is set");
+	}
+}
+
+- (void)testCreateElementaryConfigurationFile {
+	//XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+	SBUSBDevice *device = [[SBUSBDevice alloc] init];
+	device.path = NSTemporaryDirectory();
+	NSString *directory = [device.path stringByAppendingPathComponent:@"/efi/boot/"];
+	[[NSFileManager defaultManager] createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:NULL];
+	
+	NSString *fileName = [directory stringByAppendingPathComponent:@"enterprise.cfg"];
+	NSLog(@"Writing to: %@", device.path);
+	
+	SBEnterpriseConfigurationWriter *writer = [SBEnterpriseConfigurationWriter writerForDistributionType:SBDistributionElementaryOS];
+	SBEnterpriseConfigurationWriterSettings settings = { 0 };
+	[writer writeConfigurationToFile:fileName withSettings:settings andError:nil];
 	if (![[NSFileManager defaultManager] fileExistsAtPath:fileName isDirectory:NULL]) {
 		XCTFail(@"File doesn't exist.");
 	} else if (![[NSWorkspace sharedWorkspace] openFile:fileName withApplication:@"TextEdit"]) {
@@ -51,11 +93,13 @@
 	device.path = NSTemporaryDirectory();
 	NSString *directory = [device.path stringByAppendingPathComponent:@"/efi/boot/"];
 	[[NSFileManager defaultManager] createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:NULL];
-
+	
 	NSString *fileName = [directory stringByAppendingPathComponent:@"enterprise.cfg"];
 	NSLog(@"Writing to: %@", device.path);
-
-	[SBEnterpriseConfigurationWriter writeConfigurationFileAtUSB:device distributionFamily:SBDistributionUbuntu lacksEfiEnabledKernel:NO containsLegacyUbuntuVersion:NO shouldSkipBootMenu:NO];
+	
+	SBEnterpriseConfigurationWriter *writer = [SBEnterpriseConfigurationWriter writerForDistributionType:SBDistributionUbuntu];
+	SBEnterpriseConfigurationWriterSettings settings = { 0 };
+	[writer writeConfigurationToFile:fileName withSettings:settings andError:nil];
 	if (![[NSFileManager defaultManager] fileExistsAtPath:fileName isDirectory:NULL]) {
 		XCTFail(@"File doesn't exist.");
 	} else if (![[NSWorkspace sharedWorkspace] openFile:fileName withApplication:@"TextEdit"]) {
@@ -69,11 +113,13 @@
 	device.path = NSTemporaryDirectory();
 	NSString *directory = [device.path stringByAppendingPathComponent:@"/efi/boot/"];
 	[[NSFileManager defaultManager] createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:NULL];
-
+	
 	NSString *fileName = [directory stringByAppendingPathComponent:@"enterprise.cfg"];
 	NSLog(@"Writing to: %@", device.path);
-
-	[SBEnterpriseConfigurationWriter writeConfigurationFileAtUSB:device distributionFamily:SBDistributionTails lacksEfiEnabledKernel:NO containsLegacyUbuntuVersion:NO shouldSkipBootMenu:NO];
+	
+	SBEnterpriseConfigurationWriter *writer = [SBEnterpriseConfigurationWriter writerForDistributionType:SBDistributionTails];
+	SBEnterpriseConfigurationWriterSettings settings = { 0 };
+	[writer writeConfigurationToFile:fileName withSettings:settings andError:nil];
 	if (![[NSFileManager defaultManager] fileExistsAtPath:fileName isDirectory:NULL]) {
 		XCTFail(@"File doesn't exist.");
 	} else if (![[NSWorkspace sharedWorkspace] openFile:fileName withApplication:@"TextEdit"]) {
@@ -91,7 +137,7 @@
 	NSString *fileName = [directory stringByAppendingPathComponent:@"enterprise.cfg"];
 	NSLog(@"Writing to: %@", device.path);
 
-	[SBEnterpriseConfigurationWriter writeConfigurationFileAtUSB:device distributionFamily:SBDistributionUnknown lacksEfiEnabledKernel:NO containsLegacyUbuntuVersion:NO shouldSkipBootMenu:NO];
+	//[SBEnterpriseConfigurationWriter writeConfigurationFileAtUSB:device distributionFamily:SBDistributionUnknown lacksEfiEnabledKernel:NO containsLegacyUbuntuVersion:NO shouldSkipBootMenu:NO];
 	if (![[NSFileManager defaultManager] fileExistsAtPath:fileName isDirectory:NULL]) {
 		XCTFail(@"File doesn't exist.");
 	} else if (![[NSWorkspace sharedWorkspace] openFile:fileName withApplication:@"TextEdit"]) {

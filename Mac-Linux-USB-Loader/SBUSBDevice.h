@@ -32,6 +32,9 @@ typedef NS_ENUM (NSInteger, SBUSBDriveFileSystem) {
 /// The file system of the USB drive.
 @property (nonatomic) SBUSBDriveFileSystem fileSystem;
 
+/// The path to the Enterprise configure file on this USB drive.
+@property (readonly, strong) NSString *enterpriseConfigurationPath;
+
 /// Whether the USB is currently being used.
 @property BOOL USBIsInUse;
 

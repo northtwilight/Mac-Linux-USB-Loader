@@ -20,8 +20,12 @@
 	return self;
 }
 
+- (NSString *)enterpriseConfigurationPath {
+	return [self.path stringByAppendingPathComponent:@"/efi/boot/enterprise.cfg"];
+}
+
 - (BOOL)openConfigurationFileWithError:(NSError **)error {
-	NSString *path = [self.path stringByAppendingPathComponent:@"/efi/boot/enterprise.cfg"];
+	NSString *path = self.enterpriseConfigurationPath;
 	NSString *deprecatedPath = [self.path stringByAppendingPathComponent:@"/efi/boot/.MLUL-Live-USB"];
 	NSURL *outURL = [[NSFileManager defaultManager] setupSecurityScopedBookmarkForUSBAtPath:self.path withWindowForSheet:nil];
 	[outURL startAccessingSecurityScopedResource];

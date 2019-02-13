@@ -258,15 +258,21 @@
                                                         <menu key="menu" id="w3c-AQ-qre">
                                                             <items>
                                                                 <menuItem title="Ubuntu" state="on" id="1Mg-wi-KZr"/>
-                                                                <menuItem title="Debian" tag="1" id="ClT-6Q-5sn"/>
-                                                                <menuItem title="Tails" tag="2" id="2ch-0e-x2y">
+                                                                <menuItem title="Linux Mint" tag="1" id="4f2-YF-zdl">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                 </menuItem>
-                                                                <menuItem title="Kali" tag="3" id="DJS-vr-iC0">
+                                                                <menuItem title="elementary OS" tag="2" id="L3u-bo-rO6">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                                <menuItem title="Debian" tag="3" id="ClT-6Q-5sn"/>
+                                                                <menuItem title="Tails" tag="4" id="2ch-0e-x2y">
+                                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                                </menuItem>
+                                                                <menuItem title="Kali" tag="5" id="DJS-vr-iC0">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                                 </menuItem>
                                                                 <menuItem isSeparatorItem="YES" id="4LZ-L2-aSS"/>
-                                                                <menuItem title="Other" tag="4" id="7Id-gS-sW7"/>
+                                                                <menuItem title="Other" tag="6" id="7Id-gS-sW7"/>
                                                             </items>
                                                         </menu>
                                                     </popUpButtonCell>
@@ -374,7 +380,7 @@
                 <outlet property="delegate" destination="-2" id="17"/>
                 <outlet property="initialFirstResponder" destination="CDL-Pn-5VN" id="w3G-wv-V7j"/>
             </connections>
-            <point key="canvasLocation" x="2400" y="334"/>
+            <point key="canvasLocation" x="2559" y="203"/>
         </window>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <userDefaultsController representsSharedInstance="YES" id="xVb-jV-XHu"/>

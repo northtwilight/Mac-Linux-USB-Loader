@@ -88,15 +88,9 @@
 	[view setTranslatesAutoresizingMaskIntoConstraints:NO];
 	
 	[oldView addSubview:view];
-	[oldView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|"
-	                                            options:0
-	                                            metrics:nil
-	                                            views:NSDictionaryOfVariableBindings(view)]];
+	[oldView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(view)]];
 
-	[oldView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|"
-	                                            options:0
-	                                            metrics:nil
-	                                            views:NSDictionaryOfVariableBindings(view)]];
+	[oldView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(view)]];
 }
 
 #pragma mark - USB and distribution detection
@@ -287,6 +281,7 @@
 
 - (BOOL)beginFileCopy:(SBUSBDevice *)selectedUSBDrive {
 	NSFileManager *manager = [NSFileManager defaultManager];
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSString *targetUSBName = selectedUSBDrive.name;
 	NSString *targetUSBMountPoint = selectedUSBDrive.path;
 	NSString *installDirectory = [targetUSBMountPoint stringByAppendingPathComponent:@"/efi/boot/"];
@@ -343,12 +338,15 @@ get_bookmarks:
 	}
 
 	// Write out the Enterprise configuration file.
-	SBLinuxDistribution distribution = [self.distributionSelectorPopup selectedTag];
-	[SBEnterpriseConfigurationWriter writeConfigurationFileAtUSB:selectedUSBDrive
-											  distributionFamily:distribution
-										     lacksEfiEnabledKernel:(self.lacksEfiEnabledKernelCheckbox).state == NSOnState
-									 containsLegacyUbuntuVersion:NO
-											  shouldSkipBootMenu:(self.shouldSkipBootMenuCheckbox).state == NSOnState];
+	SBLinuxDistribution distribution = self.distributionSelectorPopup.selectedTag;
+	SBEnterpriseConfigurationWriterSettings settings;
+	settings.shouldSkipBootMenu = self.shouldSkipBootMenuCheckbox.state == NSOnState;
+	settings.shouldHideConfigurationFile = [defaults boolForKey:@"HideConfigurationFile"];
+
+	SBEnterpriseConfigurationWriter *writer = [SBEnterpriseConfigurationWriter writerForDistributionType:distribution];
+	[writer writeConfigurationToFile:selectedUSBDrive.enterpriseConfigurationPath
+						withSettings:settings
+							andError:&error];
 
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		SBEnterpriseSourceLocation *sourceLocation = ((SBAppDelegate *)NSApp.delegate).enterpriseInstallLocations[selectedEnterpriseSourceName];

@@ -10,72 +10,105 @@
 #import "SBAppDelegate.h"
 #import <sys/xattr.h>
 
+#import "SBUbuntuConfigurationWriter.h"
+#import "SBDebianConfigurationWriter.h"
+
 @implementation SBEnterpriseConfigurationWriter
 
-/// This is a private method.
-+ (BOOL)toggleVisibilityForFile:(NSString *)filename isDirectory:(BOOL)isDirectory
-{
-	// Convert the pathname to HFS+
-	FSRef fsRef;
-	CFURLRef url = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)filename, kCFURLPOSIXPathStyle, isDirectory);
-
-	if (!url)
-	{
-		NSLog(@"Error creating CFURL for %@.", filename);
-		return NO;
+- (instancetype)init {
+	self = [super init];
+	if (self) {
+		NSLog(@"SBEnterpriseConfigurationWriter should not be initialized directly.");
 	}
-
-	if (!CFURLGetFSRef(url, &fsRef))
-	{
-		NSLog(@"Error creating FSRef for %@.", filename);
-		CFRelease(url);
-		return NO;
-	}
-
-	CFRelease(url);
-
-	// Get the file's catalog info
-	FSCatalogInfo *catalogInfo = (FSCatalogInfo *)malloc(sizeof(FSCatalogInfo));
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-	OSErr err = FSGetCatalogInfo(&fsRef, kFSCatInfoFinderInfo, catalogInfo, NULL, NULL, NULL);
-#pragma clang diagnostic pop
-
-	if (err != noErr)
-	{
-		NSLog(@"Error getting catalog info for %@. The error returned was: %d", filename, err);
-		free(catalogInfo);
-		return NO;
-	}
-
-	// Extract the Finder info from the FSRef's catalog info
-	FInfo *info = (FInfo *)(&catalogInfo->finderInfo[0]);
-
-	// Toggle the invisibility flag
-	if (info->fdFlags & kIsInvisible)
-		info->fdFlags &= ~kIsInvisible;
-	else
-		info->fdFlags |= kIsInvisible;
-
-	// Update the file's visibility
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-	err = FSSetCatalogInfo(&fsRef, kFSCatInfoFinderInfo, catalogInfo);
-#pragma clang diagnostic pop
-
-	if (err != noErr)
-	{
-		NSLog(@"Error setting visibility bit for %@. The error returned was: %d", filename, err);
-		free(catalogInfo);
-		return NO;
-	}
-
-	free(catalogInfo);
-	return YES;
+	return self;
 }
 
-+ (void)writeConfigurationFileAtUSB:(SBUSBDevice *)device distributionFamily:(SBLinuxDistribution)family lacksEfiEnabledKernel:(BOOL)efiDisabled containsLegacyUbuntuVersion:(BOOL)containsLegacyUbuntu shouldSkipBootMenu:(BOOL)shouldSkip {
+#pragma mark - Need to be overridden
+- (NSString *)kernelPath {
+	@throw [NSException exceptionWithName:NSInternalInconsistencyException
+								   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+								 userInfo:nil];
+}
+
+- (NSString *)kernelParams {
+	@throw [NSException exceptionWithName:NSInternalInconsistencyException
+								   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+								 userInfo:nil];
+}
+
+- (NSString *)initrdPath {
+	@throw [NSException exceptionWithName:NSInternalInconsistencyException
+								   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+								 userInfo:nil];
+}
+
+- (NSString *)family {
+	@throw [NSException exceptionWithName:NSInternalInconsistencyException
+								   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+								 userInfo:nil];
+}
+
+- (NSString *)distributionName {
+	@throw [NSException exceptionWithName:NSInternalInconsistencyException
+								   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+								 userInfo:nil];
+}
+
+#pragma mark -
++ (instancetype _Nullable) writerForDistributionType:(SBLinuxDistribution)dist {
+	switch (dist) {
+		case SBDistributionUbuntu:
+			return [SBUbuntuConfigurationWriter new];
+		case SBDistributionElementaryOS:
+			return [SBElementaryConfigurationWriter new];
+		case SBDistributionLinuxMint:
+			return [SBLinuxMintConfigurationWriter new];
+		case SBDistributionDebian:
+			return [SBDebianConfigurationWriter new];
+		case SBDistributionKali:
+			return [SBKaliConfigurationWriter new];
+		case SBDistributionTails:
+			return [SBTailsConfigurationWriter new];
+		default:
+			return nil;
+	}
+}
+
+#pragma mark -
+- (BOOL)writeConfigurationToFile:(NSString * _Nonnull)path
+					withSettings:(SBEnterpriseConfigurationWriterSettings)settings
+						andError:(NSError * _Nonnull * _Nullable)err {
+	NSError *error = nil;
+	NSMutableString *string = [[NSMutableString alloc] init];
+
+	if (settings.shouldSkipBootMenu) {
+		[string appendString:@"autoboot 0\n"];
+	}
+
+	[string appendFormat:@"entry %@\n", self.distributionName];
+	if (self.family.length > 0)
+		[string appendFormat:@"family %@\n", self.family];
+	if (self.kernelPath.length > 0)
+		[string appendFormat:@"kernel %@ %@\n", self.kernelPath, self.kernelParams];
+	if (self.initrdPath.length > 0)
+		[string appendFormat:@"initrd %@\n", self.initrdPath];
+	BOOL success = [string writeToFile:path atomically:NO encoding:NSASCIIStringEncoding error:&error];
+
+	if (success && settings.shouldHideConfigurationFile) {
+		BOOL wasHidden = [NSFileManager toggleVisibilityForFile:path isDirectory:NO];
+		if (!wasHidden && err) {
+			*err = [NSError errorWithDomain:NSPOSIXErrorDomain code:ENOTSUP userInfo:nil];
+			return NO;
+		}
+	}
+
+	if (!success && err)
+		*err = error;
+
+	return success;
+}
+
+/*+ (void)writeConfigurationFileAtUSB:(SBUSBDevice *)device distributionFamily:(SBLinuxDistribution)family lacksEfiEnabledKernel:(BOOL)efiDisabled containsLegacyUbuntuVersion:(BOOL)containsLegacyUbuntu shouldSkipBootMenu:(BOOL)shouldSkip {
 	NSError *error;
 	NSString *distributionId = [SBAppDelegate distributionStringForEquivalentEnum:family];
 
@@ -143,11 +176,11 @@
 	// Hide the configuration file if the user has indicated that they desire this behavior.
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	if ([defaults boolForKey:@"HideConfigurationFile"]) {
-		BOOL result = [self toggleVisibilityForFile:path isDirectory:NO];
-		if (result != 0) {
+		BOOL result = [NSFileManager toggleVisibilityForFile:path isDirectory:NO];
+		if (!result) {
 			NSLog(@"Failed to hide configuration file.");
 		}
 	}
-}
+}*/
 
 @end
