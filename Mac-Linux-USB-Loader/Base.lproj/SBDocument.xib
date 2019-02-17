@@ -14,7 +14,6 @@
                 <outlet property="enterpriseSourceSelector" destination="3qA-qj-K0g" id="SDh-QA-Ih3"/>
                 <outlet property="forwardButton" destination="CDL-Pn-5VN" id="04o-0r-cid"/>
                 <outlet property="installationProgressBar" destination="bdV-ll-emw" id="CtX-Hv-xCw"/>
-                <outlet property="lacksEfiEnabledKernelCheckbox" destination="3yc-Pg-5C8" id="K0h-hG-Gkg"/>
                 <outlet property="shouldSkipBootMenuCheckbox" destination="ZcM-fL-Xsr" id="EDL-r9-Gas"/>
                 <outlet property="sideView" destination="KuY-po-env" id="yYL-I8-auy"/>
                 <outlet property="tabView" destination="3b6-2Y-5OI" id="GT0-l0-3dB"/>
@@ -280,13 +279,6 @@
                                                         <action selector="distributionTypePopupChanged:" target="-2" id="Zbk-6B-DWZ"/>
                                                     </connections>
                                                 </popUpButton>
-                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="3yc-Pg-5C8">
-                                                    <rect key="frame" x="18" y="170" width="339" height="18"/>
-                                                    <buttonCell key="cell" type="check" title="This ISO lacks an EFI-enabled kernel" bezelStyle="regularSquare" imagePosition="left" scrollable="YES" lineBreakMode="clipping" state="on" inset="2" id="2N3-rh-Hxh">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                </button>
                                                 <button translatesAutoresizingMaskIntoConstraints="NO" id="ZcM-fL-Xsr">
                                                     <rect key="frame" x="18" y="190" width="339" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Skip the boot selection menu" bezelStyle="regularSquare" imagePosition="left" scrollable="YES" lineBreakMode="clipping" state="on" inset="2" id="RBA-Ti-vGI">
@@ -297,11 +289,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="bdV-ll-emw" secondAttribute="bottom" constant="20" id="4r6-Pw-AkU"/>
-                                                <constraint firstItem="3yc-Pg-5C8" firstAttribute="top" secondItem="ZcM-fL-Xsr" secondAttribute="bottom" constant="6" id="8Gd-vp-q6k"/>
                                                 <constraint firstItem="ZcM-fL-Xsr" firstAttribute="leading" secondItem="pVC-o9-IvQ" secondAttribute="leading" constant="20" id="NPc-AM-Z25"/>
-                                                <constraint firstAttribute="trailing" secondItem="3yc-Pg-5C8" secondAttribute="trailing" constant="20" id="OoI-Vq-6XI"/>
                                                 <constraint firstAttribute="trailing" secondItem="FN5-Ti-WuH" secondAttribute="trailing" constant="20" id="R6S-i6-4y1"/>
-                                                <constraint firstItem="3yc-Pg-5C8" firstAttribute="leading" secondItem="pVC-o9-IvQ" secondAttribute="leading" constant="20" id="Tz6-cC-oQl"/>
                                                 <constraint firstItem="FN5-Ti-WuH" firstAttribute="top" secondItem="pVC-o9-IvQ" secondAttribute="top" constant="19" id="UZE-UD-gp4"/>
                                                 <constraint firstItem="PJn-58-U8W" firstAttribute="top" secondItem="pVC-o9-IvQ" secondAttribute="top" constant="20" id="cKr-xW-ui5"/>
                                                 <constraint firstItem="PJn-58-U8W" firstAttribute="leading" secondItem="pVC-o9-IvQ" secondAttribute="leading" constant="20" id="hPs-7b-ahR"/>
@@ -380,7 +369,7 @@
                 <outlet property="delegate" destination="-2" id="17"/>
                 <outlet property="initialFirstResponder" destination="CDL-Pn-5VN" id="w3G-wv-V7j"/>
             </connections>
-            <point key="canvasLocation" x="2559" y="203"/>
+            <point key="canvasLocation" x="2582" y="236"/>
         </window>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <userDefaultsController representsSharedInstance="YES" id="xVb-jV-XHu"/>

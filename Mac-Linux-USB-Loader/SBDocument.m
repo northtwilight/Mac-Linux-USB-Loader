@@ -22,7 +22,6 @@
 @property (weak) IBOutlet NSCollectionView *usbDriveSelector;
 @property (weak) IBOutlet NSPopUpButton *enterpriseSourceSelector;
 @property (weak) IBOutlet NSPopUpButton *distributionSelectorPopup;
-@property (weak) IBOutlet NSButton *lacksEfiEnabledKernelCheckbox;
 @property (weak) IBOutlet NSButton *shouldSkipBootMenuCheckbox;
 @property (weak) IBOutlet NSButton *forwardButton;
 @property (weak) IBOutlet NSButton *backwardsButton;
@@ -98,18 +97,6 @@
 	SBLinuxDistribution family = [SBAppDelegate distributionTypeForISOName:self.fileURL.absoluteString.lowercaseString];
 	NSString *isoName = self.fileURL.path.lowercaseString.lastPathComponent;
 	[self.distributionSelectorPopup selectItemWithTag:family];
-
-	// If this is Linux Mint or a legacy Mac ISO of Ubuntu, check the
-	// first check box since we need it so that the correct kernel path will be written.
-	if ([isoName containsSubstring:@"linuxmint"] ||
-	    [isoName containsSubstring:@"linux mint"] ||
-		[isoName containsSubstring:@"ubuntu"] ||
-	    [isoName containsSubstring:@"elementary"] || // for Loki, and possibly Freya
-	    [isoName containsSubstring:@"+mac"]) {
-		self.lacksEfiEnabledKernelCheckbox.state = NSOnState;
-	} else {
-		self.lacksEfiEnabledKernelCheckbox.state = NSOffState;
-	}
 }
 
 - (void)setupUSBDriveSelector {
@@ -391,7 +378,6 @@ get_bookmarks:
 	(self.installationProgressBar).indeterminate = enabled;
 	(self.installationProgressBar).doubleValue = 0.0;
 	(self.distributionSelectorPopup).enabled = enabled;
-	(self.lacksEfiEnabledKernelCheckbox).enabled = enabled;
 	(self.shouldSkipBootMenuCheckbox).enabled = enabled;
 	(self.usbDriveSelector).hidden = !enabled;
 	(self.enterpriseSourceSelector).enabled = enabled;
@@ -436,10 +422,7 @@ get_bookmarks:
 }
 
 - (IBAction)distributionTypePopupChanged:(NSPopUpButton *)sender {
-	BOOL isUbuntuSelected = (sender.selectedTag == SBDistributionUbuntu);
-	(self.lacksEfiEnabledKernelCheckbox).hidden = (isUbuntuSelected ? NO : YES);
-	(self.lacksEfiEnabledKernelCheckbox).enabled = isUbuntuSelected;
-	(self.shouldSkipBootMenuCheckbox).hidden = (sender.selectedTag == SBDistributionUnknown);
+	self.shouldSkipBootMenuCheckbox.hidden = (sender.selectedTag == SBDistributionUnknown);
 }
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
