@@ -50,11 +50,6 @@ typedef struct {
 					withSettings:(SBEnterpriseConfigurationWriterSettings)settings
 						andError:(NSError * _Nonnull * _Nullable)err;
 
-/**
- * Writes the Enterprise configuration for the given distribution to the specified USB device.
- */
-//+ (void)writeConfigurationFileAtUSB:(SBUSBDevice *)device distributionFamily:(SBLinuxDistribution)family lacksEfiEnabledKernel:(BOOL)isMacUbuntu containsLegacyUbuntuVersion:(BOOL)containsLegacyUbuntu shouldSkipBootMenu:(BOOL)shouldSkip;
-
 /// The path to the Linux kernel inside of this ISO.
 @property (readonly, nonatomic, copy) NSString * _Nonnull kernelPath;
 /// Which kernel parameters need to be passed on boot.
