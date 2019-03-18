@@ -69,6 +69,8 @@
 			return [SBKaliConfigurationWriter new];
 		case SBDistributionTails:
 			return [SBTailsConfigurationWriter new];
+		case SBDistributionUnknown:
+			return [SBUnknownDistributionConfigurationWriter new];
 		default:
 			return nil;
 	}
@@ -105,6 +107,33 @@
 	if (!success && err)
 		*err = error;
 
+	return success;
+}
+
+@end
+
+@implementation SBUnknownDistributionConfigurationWriter
+
+- (BOOL)writeConfigurationToFile:(NSString * _Nonnull)path
+					withSettings:(SBEnterpriseConfigurationWriterSettings)settings
+						andError:(NSError * _Nonnull * _Nullable)err {
+	NSError *error = nil;
+	NSMutableString *string = [[NSMutableString alloc] init];
+	const char *text = "# To be filled in manually.\n"
+	                   "# For details see https://sevenbits.github.io/Enterprise/";
+	
+	if (settings.shouldSkipBootMenu) {
+		[string appendString:@"autoboot 0\n"];
+	}
+	[string appendString:[NSString stringWithUTF8String:text]];
+	BOOL success = [string writeToFile:path atomically:NO encoding:NSASCIIStringEncoding error:&error];
+	
+	if (!success && err) {
+		*err = error;
+	} else {
+		[[NSWorkspace sharedWorkspace] openFile:path withApplication:@"TextEdit"];
+	}
+	
 	return success;
 }
 

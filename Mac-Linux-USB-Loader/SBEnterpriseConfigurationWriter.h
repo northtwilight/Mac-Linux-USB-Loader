@@ -62,3 +62,7 @@ typedef struct {
 @property (readonly, nonatomic, copy) NSString * _Nonnull distributionName;
 
 @end
+
+@interface SBUnknownDistributionConfigurationWriter : SBEnterpriseConfigurationWriter
+
+@end
