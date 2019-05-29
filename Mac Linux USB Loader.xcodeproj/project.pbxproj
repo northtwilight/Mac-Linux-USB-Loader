@@ -722,7 +722,7 @@
 			};
 			buildConfigurationList = 24A4EC6E1884966900CE6CF0 /* Build configuration list for PBXProject "Mac Linux USB Loader" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
@@ -732,6 +732,8 @@
 				en,
 				nb,
 				"zh-Hans",
+				es,
+				it,
 			);
 			mainGroup = 24A4EC6A1884966900CE6CF0;
 			productRefGroup = 24A4EC741884966900CE6CF0 /* Products */;
@@ -825,7 +827,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Mac Linux USB Loader/Pods-Mac Linux USB Loader-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Mac Linux USB Loader/Pods-Mac Linux USB Loader-resources.sh",
 				"${PODS_ROOT}/RHPreferences/RHPreferences/RHPreferencesWindow.xib",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -834,7 +836,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mac Linux USB Loader/Pods-Mac Linux USB Loader-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mac Linux USB Loader/Pods-Mac Linux USB Loader-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1248,9 +1250,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Mac_Linux_USB_Loader-ftzupntfxyasrlcinvwljpuogpbh/Build/Products/Debug",
-					"$(PROJECT_DIR)/Pods/Sparkle",
-					"$(PROJECT_DIR)/Dependencies",
+					Dependencies/,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mac-Linux-USB-Loader/Mac-Linux-USB-Loader-Prefix.pch";
@@ -1278,9 +1278,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Mac_Linux_USB_Loader-ftzupntfxyasrlcinvwljpuogpbh/Build/Products/Debug",
-					"$(PROJECT_DIR)/Pods/Sparkle",
-					"$(PROJECT_DIR)/Dependencies",
+					Dependencies/,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mac-Linux-USB-Loader/Mac-Linux-USB-Loader-Prefix.pch";

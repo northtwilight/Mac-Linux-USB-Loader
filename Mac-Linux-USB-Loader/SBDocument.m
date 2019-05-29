@@ -95,7 +95,6 @@
 #pragma mark - USB and distribution detection
 - (void)detectDistributionFamily {
 	SBLinuxDistribution family = [SBAppDelegate distributionTypeForISOName:self.fileURL.absoluteString.lowercaseString];
-	NSString *isoName = self.fileURL.path.lowercaseString.lastPathComponent;
 	[self.distributionSelectorPopup selectItemWithTag:family];
 }
 
