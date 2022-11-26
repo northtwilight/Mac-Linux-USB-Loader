@@ -704,7 +704,7 @@
 				ORGANIZATIONNAME = SevenBits;
 				TargetAttributes = {
 					24A4EC721884966900CE6CF0 = {
-						DevelopmentTeam = 8PA6GA85US;
+						DevelopmentTeam = HDMN82H87M;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
 								enabled = 1;
@@ -715,6 +715,7 @@
 						};
 					};
 					24A4EC961884966A00CE6CF0 = {
+						DevelopmentTeam = HDMN82H87M;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 24A4EC721884966900CE6CF0;
 					};
@@ -1247,6 +1248,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HDMN82H87M;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1275,6 +1277,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HDMN82H87M;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1301,6 +1304,7 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Mac Linux USB Loader.app/Contents/MacOS/Mac Linux USB Loader";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HDMN82H87M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
@@ -1326,6 +1330,7 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Mac Linux USB Loader.app/Contents/MacOS/Mac Linux USB Loader";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HDMN82H87M;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
